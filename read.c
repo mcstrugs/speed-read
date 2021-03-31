@@ -1,21 +1,29 @@
 #include <ncurses.h>
 
-int main()
+int main(int argc, char *argv[])
 {
-    char text[] = "Hello, World!";
+    if (argc == 1) {
+        printf("[error] not enough arguments\n");
+        return 1;
+    }
     char *t;
 
     initscr();
-    t = text;
-
-    while(*t)
+    for(int i = 1; i < argc; i++)
     {
-        addch(*t);
-        t++;
-        refresh();
+        t = argv[i];
+        while(*t)
+        {
+            addch(*t);
+            t++;
+            refresh();
+            napms(100);
+        }
+        addch(' ');
         napms(100);
     }
     getch();
+
 
     endwin();
     return 0;
