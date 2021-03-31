@@ -1,4 +1,4 @@
-main : main.c
+main : read.c
 	gcc -lncurses -o read read.c
 clean :
 	rm read
